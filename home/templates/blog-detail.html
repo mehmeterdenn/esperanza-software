@@ -1,0 +1,90 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+{% block keywords %}"{{ post.keywords }}"{% endblock %}
+{% block description %}"{{ post.description }}"{% endblock %}
+{% block head %}
+    <link rel="shorcut icon" type="image/x-icon" href="{{setting.icon.url}}">
+    <style>
+        button {
+            background-color: #fd6802;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 25px 0px 25px 0px;
+        }
+    </style>
+{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="row text-center" style="background-image:url({% static 'images/bg.png' %}">
+        <div style="padding-top:50px;padding-bottom:50px">
+            <img src="{{ post.image.url }}"  class="img-responsive img-rounded" alt="{{ post.title }}" style="margin:auto;display:block;width:25%">
+            <h2 style="margin-top:25px">{{ post.title|safe }}</h2>
+            <div class="writer">
+                <p>yazan: {{ post.user.username }}</p>
+                <p>{{ post.create_at|date:'d-m-Y H:i' }}</p>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8" style="text-align: left">
+            <hr class="hr2">
+            <p style="color: #0f0f0f">{{ post.content|safe }}</p>
+            <hr class="hr2">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="text-center" style="margin:20px">Yorumlar</h1>
+            {% for rs in comments %}
+                <div class="desc" style="background-color: #f2f3f5;border:0;margin-bottom: 20px">
+                    <h4 style="color:#fd6802">{{ rs.subject }}</h4>
+                    <p style="color:#1f1f1f">{{ rs.comment }}</p>
+                    <div style="float:right;margin-right:-20px;text-align:center">
+                        <img src="{% static 'images/user-16.png' %}">
+                        <small style="color:#fd6802">{{ rs.user.username }}</small>
+                        <small>| {{ rs.create_at|date:'d-m-Y H:i' }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+            <hr class="hr2">
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" style="text-align: left">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="contact_form">
+                <form action="/blog/{{ post.category.slug }}/{{ post.id }}/addcomment/" method="post">
+                    {% csrf_token %}
+                    <label for="id_subject">Konu: </label>
+                    <input class="form-control" type="text" name="subject" id="id_subject" maxlength="90" placeholder="Konu" required="">
+                    <label for="id_comment">Mesajınız: </label>
+                    <textarea class="form-control" name="comment" id="id_comment" rows="5"  placeholder="Mesajınızı buraya yazın..." maxlength="255" required=""></textarea>
+                    {% if user is not None %}
+                        <button type="submit">Yorum Yap</button>
+                    {% else %}
+                        <p>Yorum bırakmak için lütfen <a style="color:#fd6802" href="/login">giriş</a> yapınız.</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr class="invis">
+{% endblock %}

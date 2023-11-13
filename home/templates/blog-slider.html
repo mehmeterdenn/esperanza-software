@@ -1,0 +1,24 @@
+{% load static %}
+<div id="services" class="parallax section lb" style="width: auto">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>Son Yazılar</h3>
+            <p class="lead"></p>
+            <div class="owl-services owl-carousel owl-theme">
+                {% for rs in last_posts %}
+                    <div class="service-widget">
+                        <div class="post-media wow fadeIn">
+                            <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><img src="{{ rs.image.url }}"  class="img-responsive img-rounded" alt="{{ rs.title }}"></a>
+                        </div>
+                        <div class="service-dit">
+                            <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><h3>{{ rs.title|safe }}</h3></a>
+                            <p>yazan: {{ rs.user.username }}</p>
+                            <p>{{ rs.update_at|date:'d-m-Y H:i' }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- end service -->
+            </div>
+        </div><!-- end title -->
+    </div><!-- end container -->
+</div><!-- end section -->

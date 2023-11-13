@@ -1,0 +1,98 @@
+{% load static %}
+{% load mptt_tags %}
+<!-- LOADER -->
+<div id="preloader">
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>
+</div><!-- end loader -->
+<!-- END LOADER -->
+
+<header class="header header_style_01">
+    <nav class="megamenu navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://{{ request.get_host }}/"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if page == 'home' %}
+                        <li><a class="active" href="/">Anasayfa</a></li>
+                    {% else %}
+                        <li><a href="/">Anasayfa</a><li>
+                    {% endif %}
+                    {% if page == 'hakkimizda' %}
+                        <li><a class="active" href="/hakkimizda">Hakkımızda</a></li>
+                    {% else %}
+                        <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    {% endif %}
+                    {% if menu %}
+                        {% recursetree menu %}
+                            <li>
+                                <div class="dropdown" style="margin-top:11px ">
+                                    <a href="/menu/{{ node.id }}" class="dropbtn" style="font-weight:600" {% if not node.is_leaf_node %} data-toggle="dropdown" aria-expanded="true" {% endif %}>{{ node.title }} ▸{% if not node.is_leaf_node %}{% endif %}</a>
+                                    <div onclick="myFunction()" id="myDropdown" class="dropdown-content">
+                                        {% if not node.is_leaf_node %}
+                                            <ul class="list-links">
+                                                <li>{{ children }}</li>
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endrecursetree %}
+                    {% endif %}
+                    {% if page == 'blog' %}
+                        <li><a class="active" href="/blog">Blog</a></li>
+                    {% else %}
+                        <li><a href="/blog">Blog</a></li>
+                    {% endif %}
+                    {% if page == 'referanslarimiz' %}
+                        <li><a class="active" href="/referanslarimiz">Referanslar</a></li>
+                    {% else %}
+                        <li><a href="/referanslarimiz">Referanslar</a></li>
+                    {% endif %}
+                    {% if page == 'sss' %}
+                        <li><a class="active" href="/sss">SSS</a></li>
+                    {% else %}
+                        <li><a href="/sss">SSS</a></li>
+                    {% endif %}
+                    {% if page == 'iletisim' %}
+                        <li><a class="active" href="/iletisim">Bize Ulaşın</a></li>
+                    {% else %}
+                        <li><a href="/iletisim">Bize Ulaşın</a></li>
+                    {% endif %}
+                    <div style="margin-top: -8px" class="dropdown">
+                        <img onclick="myFunction()" class="dropbtn" src="{% static 'images/user-32.png' %}">
+                        <div id="myDropdown" class="dropdown-content">
+                            {% if user.id is not None %}
+                                <li><a href="/user">Profilim</a></li>
+                            {% endif %}
+                            {% if user.id is None %}
+                                <li><a href="/login">Giriş Yap</a></li>
+                            {% endif %}
+                            {% if user.id is None %}
+                                <li><a href="/signup">Kayıt Ol</a></li>
+                            {% endif %}
+                            {% if user.id is not None %}
+                                <li><a href="/logout">Çıkış Yap</a></li>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {{ user.username }}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

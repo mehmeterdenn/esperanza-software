@@ -1,0 +1,122 @@
+{% extends "homebase.html" %}
+
+{% block title %}Hizmetlerimiz{% endblock %}
+{% block keywords %}"{{ setting.keywords }}"{% endblock %}
+{% block description %}"{{ setting.description }}"{% endblock %}
+{% block head %} <link rel="shorcut icon" type="image/x-icon" href="{{setting.icon.url}}">{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="section">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Hizmetlerimiz</h3>
+                <p> {{ setting.ourservices|safe }}</p>
+                <hr class="hr3">
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="service-widget">
+                        <div class="post-media wow fadeIn">
+                            <img src="{% static "uploads/is_zekasi.png"%}" class="img-responsive img-rounded">
+                        </div>
+                        <h3 style="color: #0f0f0f">İş Zekası Hizmetleri</h3>
+                        <p style="color: #0f0f0f">İş Zekası birçok sektörde hayati önem taşıyan bir araçtır. Eğer ihtiyacınız olan iş ağınızı kolayca yönetebilmek ve iş ortaklarınız arasında dengeli bir mekanizma yaratmaksa doğru yerdesiniz!</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="service-widget">
+                        <div class="post-media wow fadeIn">
+                            <img src="{% static "uploads/kurumsal.jpg"%}" class="img-responsive img-rounded">
+                        </div>
+                        <h3 style="color: #0f0f0f">Kurumsal Yazılım Çözümleri</h3>
+                        <p style="color: #0f0f0f">İhtiyacınıza göre özel olarak sunduğumuz yazılım çözümleri ile artık iş yapmak daha kolay ve güvenilir. Profesyonelliğe adım atmanın zamanı geldi!</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="service-widget">
+                        <div class="post-media wow fadeIn">
+                            <img src="{% static "uploads/mobil.jpg"%}" class="img-responsive img-rounded">
+                        </div>
+                        <h3 style="color: #0f0f0f">Web ve Mobil Uygulama Çözümleri</h3>
+                        <p style="color: #0f0f0f">Mobil uygulama ve web tabanlı hizmetlerimiz ile  Tüm Platformlarda (Android, iOS) mobil uygulama sahibi olabilirsiniz!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Neden Bizi Tercih Etmelisiniz?</h3>
+                <hr class="hr2">
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6">
+                    <div class="about-item">
+                        <div class="about-icon">
+                            <span class="icon icon-briefcase"></span>
+                        </div>
+                        <div class="about-text">
+                            <h3> <a href="#">Teknik Bilgi Birikimi ve Sektörel Deneyim</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="about-item">
+                        <div class="about-icon">
+                            <span class="icon icon-user-check"></span>
+                        </div>
+                        <div class="about-text">
+                            <h3> <a href="#">Müşteri ve Kalite Odaklı Yaklaşım</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="about-item">
+                        <div class="about-icon">
+                            <span class="icon icon-mobile"></span>
+                        </div>
+                        <div class="about-text">
+                            <h3> <a href="#">Tüm Ürünlerde ve Platformlarda Çözümler</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="about-item">
+                        <div class="about-icon">
+                            <span class="icon icon-lock"></span>
+                        </div>
+                        <div class="about-text">
+                            <h3><a href="#">Tam Gizlilik ve Maksimum Veri Güvenliği</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6">
+                    <div class="about-item">
+                        <div class="about-icon">
+                            <span class="icon icon-cool"></span>
+                        </div>
+                        <div class="about-text">
+                            <h3> <a href="#">Konusunda Uzman Danışmanlar</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="about-item">
+                        <div class="about-icon">
+                            <span class="icon icon-database"></span>
+                        </div>
+                        <div class="about-text">
+                            <h3> <a href="#">7/24 Bakım Desteği Hizmeti</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

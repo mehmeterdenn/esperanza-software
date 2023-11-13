@@ -1,0 +1,52 @@
+{% extends "homebase.html" %}
+{% block title %}Yapılan Yorumlarım{% endblock %}
+{% block keywords %}"{{ setting.keywords }}"{% endblock %}
+{% block description %}"{{ setting.description }}"{% endblock %}
+{% block head %} <link rel="shorcut icon" type="image/x-icon" href="{{setting.icon.url}}">{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h2 class="h2" style="text-align:center;color: #1f1f1f">
+            Yapılan Yorumlar
+        </h2>
+        <div class="col-md-4">
+            {% include 'user_panel.html' %}
+        </div>
+        <div class="col-md-8">
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
+            <table class="table">
+                <tr>
+                    <th class="text-left">Makale Adı</th>
+                    <th class="text-left">Yorum Konusu</th>
+                    <th class="text-left">Yorum</th>
+                    <th class="text-left">Gösterimde</th>
+                    <th class="text-left">Tarih/Saat</th>
+                    <th class="text-left">Detay</th>
+                </tr>
+                {% for rs in comments %}
+                    <tr>
+                        <td class="text-left">
+                            <a href="http://127.0.0.1:8000/blog/{{ rs.post.category.slug}}/{{ rs.post.id }}">
+                                {{ rs.post.title }}
+                            </a>
+                        </td>
+                        <td class="text-left">{{ rs.subject }}</td>
+                        <td class="text-left">{{ rs.comment }}</td>
+                        <td class="text-left">{{ rs.status }}</td>
+                        <td class="text-left">{{ rs.create_at|date:'d-m-Y H:i' }}</td>
+                        <td class="text-left"><a class="btn-danger" style="padding: 5px" href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Yorumunuz silinecek! Eminmisiniz?')">Sil</a> </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

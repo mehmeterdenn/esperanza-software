@@ -1,0 +1,93 @@
+{% load static %}
+
+<footer class="footer parallax" style="background-color: #393939">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="widget">
+                    <div class="widget-title">
+                        <img src="{% static "images/logo.png" %}" alt="" />
+                    </div>
+                    <p>"{{ setting.description|safe }}"</p>
+                    <p> {{ setting.address|safe }} </p>
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="widget clearfix">
+                    <div class="widget-title">
+                        <h3>Sayfalar</h3>
+                    </div>
+
+                    <ul class="footer-links hov">
+                        <li><a href="/">Anasayfa <span class="icon icon-arrow-right2"></span></a></li>
+                        <li><a href="/hakkimizda">Hakkımızda<span class="icon icon-arrow-right2"></span></a></li>
+                        <li><a href="/content/menu/5/">Hizmetlerimiz <span class="icon icon-arrow-right2"></span></a></li>
+                        <li><a href="/content/menu/6/">Projelerimiz <span class="icon icon-arrow-right2"></span></a></li>
+                        <li><a href="/blog">Blog <span class="icon icon-arrow-right2"></span></a></li>
+                        <li><a href="/referanslarimiz">Referanslar<span class="icon icon-arrow-right2"></span></a></li>
+                        <li><a href="/sss">SSS <span class="icon icon-arrow-right2"></span></a></li>
+                        <li><a href="/iletisim">İletişim <span class="icon icon-arrow-right2"></span></a></li>
+                    </ul><!-- end links -->
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="footer-distributed widget clearfix">
+                    <div class="widget-title">
+                        <h3>Abone Ol</h3>
+                        <p>Bizleri daha yakından takip etmek için bültenimize abone olabilirsiniz.</p>
+                    </div>
+
+                    <div class="footer-right">
+                        <form method="get" action="#">
+                            <input placeholder="Buraya mail adresinizi girin" name="submit">
+                            <i class="fa fa-envelope-o"></i>
+                        </form>
+                    </div>
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</footer><!-- end footer -->
+
+
+<div class="top-bar" style="background-color:#232323">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="left-top">
+                    <div class="email-box">
+                        <a href="mailto:{{ setting.email }}"><i class="fa fa-envelope-o" aria-hidden="true"></i>{{ setting.email }}</a>
+                    </div>
+                    <div class="phone-box">
+                        <a href="tel:{{ setting.phone }}"><i class="fa fa-phone" aria-hidden="true"></i>{{ setting.phone}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="right-top">
+                    <div class="social-box">
+                        <ul>
+                            <li><a href="http://{{ setting.facebook }}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                            <li><a href="http://{{ setting.instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="http://{{ setting.linkedin }}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                            <li><a href="http://{{ setting.twitter }}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss-square" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+<!-- ALL JS FILES -->
+<script src="{% static "js/all.js" %}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- ALL PLUGINS -->
+<script src="{% static "js/custom.js" %}"></script>
+<script src="{% static "js/portfolio.js" %}"></script>
+<script src="{% static "js/hoverdir.js"%}"></script>

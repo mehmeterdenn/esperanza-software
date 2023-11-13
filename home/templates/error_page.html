@@ -1,0 +1,17 @@
+{% extends "homebase.html" %}
+{% block title %}Referanslarımız{% endblock %}
+{% block keywords %}"{{ setting.keywords }}"{% endblock %}
+{% block description %}"{{ setting.description }}"{% endblock %}
+{% block head %} <link rel="shorcut icon" type="image/x-icon" href="{{setting.icon.url}}">{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="section">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3 style="color: #1f1f1f">Aradığınız Sayfa Bulunamadı</h3>
+                <hr class="hr3">
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "homebase.html" %}
+{% block title %}İçeriklerim{% endblock %}
+{% block keywords %}"{{ setting.keywords }}"{% endblock %}
+{% block description %}"{{ setting.description }}"{% endblock %}
+{% block head %} <link rel="shorcut icon" type="image/x-icon" href="{{setting.icon.url}}">{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2 class="h2" style="text-align:center;color: #1f1f1f">
+                İçerikler
+            </h2>
+            <div class="col-md-4">
+                {% include 'user_panel.html' %}
+            </div>
+            <div class="col-md-8">
+                <table class="table">
+                    <tr>
+                        <th class="text-left">Başlık</th>
+                        <th class="text-left">Menü</th>
+                        <th class="text-left">Gösterimde</th>
+                        <th class="text-left">Tarih/Saat</th>
+                        <th class="text-left">Detay</th>
+                    </tr>
+                    {% for rs in contents %}
+                        <tr>
+                            <td class="text-left">
+                                <a href="http://{{ request.get_host }}/menu/{{ rs.menu.id }}">
+                                    {{ rs.title }}
+                                </a>
+                            </td>
+                            <td class="text-left">{{ rs.menu}}</td>
+                            <td class="text-left">{{ rs.status }}</td>
+                            <td class="text-left">{{ rs.update_at|date:'d-m-Y H:i' }}</td>
+                            <td class="text-left"><a class="btn-warning" style="padding: 5px" href="/user/contentedit/{{ rs.id }}">Düzenle</a></td>
+                            <td class="text-left"><a class="btn-danger" style="padding: 5px" href="/user/contentdelete/{{ rs.id }}" onclick="return confirm('İçeriğiniz silinecek! Eminmisiniz?')">Sil</a> </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

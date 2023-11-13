@@ -1,0 +1,66 @@
+{% extends "homebase.html" %}
+{% block title %}{{ setting.company }} Blog{% endblock %}
+{% block keywords %}"{{ setting.keywords }}"{% endblock %}
+{% block description %}"{{ setting.description }}"{% endblock %}
+{% block head %}<link rel="shorcut icon" type="image/x-icon" href="{{setting.icon.url}}">{% endblock %}
+{% block content %}
+    <div class="section" style="width: content-box;margin-top:-20px;background-color:#f2f3f5">
+        <div class="container" style="width:100%">
+            <div class="col-lg-3" style="position:fixed">
+                <nav class="portfolio-filter" style="width:100px;margin-top:30px">
+                    <ul>
+                        <li style="margin: 3px"><a class="btn btn-dark btn-radius btn-brd active" href="#" data-filter="*" ><span class="oi hidden-xs" data-glyph="grid-three-up"></span>Hepsi</a></li>
+                        <li style="margin: 3px"><a class="btn btn-dark btn-radius btn-brd " href="#" data-toggle="tooltip" data-placement="top" data-filter=".cat1">Genel</a></li>
+                        <li style="margin: 3px"><a class="btn btn-dark btn-radius btn-brd " href="#" data-toggle="tooltip" data-placement="top" data-filter=".cat2">Web Programlama</a></li>
+                        <li style="margin: 3px"><a class="btn btn-dark btn-radius btn-brd " href="#" data-toggle="tooltip" data-placement="top" data-filter=".cat3">İş Zekası</a></li>
+                        <li style="margin: 3px"><a class="btn btn-dark btn-radius btn-brd " href="#" data-toggle="tooltip" data-placement="top" data-filter=".cat4">Mobil Uygulama</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="da-thumbs" style="margin-right:50px;float:right;" class="da-thumbs portfolio col-lg-9">
+                {% for rs in post %}
+                    {% if rs.category.title == "Genel" %}
+                        <div class="post-media pitem item-w1 item-h1 cat1">
+                            <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><img src="{{ rs.image.url }}"  class="img-responsive img-rounded" alt="{{ rs.title }}"></a>
+                            <div style="text-align: center;margin-top: 10px">
+                                <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><h3>{{ rs.title|safe }}</h3></a>
+                                <small>yazan: {{ rs.user.username }}</small><br>
+                                <small>{{ rs.create_at|date:'d-m-Y H:i' }}</small>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if rs.category.title == "Web Programlama" %}
+                        <div class="post-media pitem item-w1 item-h1 cat2">
+                            <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><img src="{{ rs.image.url }}"  class="img-responsive img-rounded" alt="{{ rs.title }}"></a>
+                            <div style="text-align: center;margin-top: 10px">
+                                <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><h3>{{ rs.title|safe }}</h3></a>
+                                <small>yazan: {{ rs.user.username }}</small><br>
+                                <small>{{ rs.create_at|date:'d-m-Y H:i' }}</small>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if rs.category.title == "İş Zekası" %}
+                        <div class="post-media pitem item-w1 item-h1 cat3">
+                            <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><img src="{{ rs.image.url }}"  class="img-responsive img-rounded" alt="{{ rs.title }}"></a>
+                            <div style="text-align: center;margin-top: 10px">
+                                <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><h3>{{ rs.title|safe }}</h3></a>
+                                <small>yazan: {{ rs.user.username }}</small><br>
+                                <small>{{ rs.create_at|date:'d-m-Y H:i' }}</small>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if rs.category.title == "Mobil Uygulama" %}
+                        <div class="post-media pitem item-w1 item-h1 cat4">
+                            <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><img src="{{ rs.image.url }}"  class="img-responsive img-rounded" alt="{{ rs.title }}"></a>
+                            <div style="text-align: center;margin-top: 10px">
+                                <a href="/blog/{{ rs.category.slug }}/{{ rs.id }}"><h3>{{ rs.title|safe }}</h3></a>
+                                <small>yazan: {{ rs.user.username }}</small><br>
+                                <small>{{ rs.create_at|date:'d-m-Y H:i' }}</small>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div><
+    </div>
+{% endblock %}

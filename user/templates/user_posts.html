@@ -1,0 +1,49 @@
+{% extends "homebase.html" %}
+{% block title %}Makalelerim{% endblock %}
+{% block keywords %}"{{ setting.keywords }}"{% endblock %}
+{% block description %}"{{ setting.description }}"{% endblock %}
+{% block head %} <link rel="shorcut icon" type="image/x-icon" href="{{setting.icon.url}}">{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2 class="h2" style="text-align:center;color: #1f1f1f">
+                Makaleler
+            </h2>
+            <div class="col-md-4">
+                {% include 'user_panel.html' %}
+            </div>
+            <div class="col-md-8">
+                <table class="table">
+                    <tr>
+                        <th class="text-left">Başlık Resmi</th>
+                        <th class="text-left">Başlık</th>
+                        <th class="text-left">Kategori</th>
+                        <th class="text-left">Gösterimde</th>
+                        <th class="text-left">Tarih/Saat</th>
+                        <th class="text-left">Detay</th>
+                    </tr>
+                    {% for rs in posts %}
+                        <tr>
+                            <td class="text-left">
+                                <a href="http://{{ request.get_host }}/blog/{{ rs.category.slug}}/{{ rs.id }}">
+                                    <img src="{{ rs.image.url }}" style="height: 100px">
+                                </a>
+                            </td>
+                            <td class="text-left">
+                                <a href="http://{{ request.get_host }}/blog/{{ rs.category.slug}}/{{ rs.id }}">
+                                    {{ rs.title }}
+                                </a>
+                            </td>
+                            <td class="text-left">{{ rs.category}}</td>
+                            <td class="text-left">{{ rs.status }}</td>
+                            <td class="text-left">{{ rs.update_at|date:'d-m-Y H:i' }}</td>
+                            <td class="text-left"><a class="btn-warning" style="padding: 5px" href="/user/postedit/{{ rs.id }}">Düzenle</a></td>
+                            <td class="text-left"><a class="btn-danger" style="padding: 5px" href="/user/postdelete/{{ rs.id }}" onclick="return confirm('Makaleniz silinecek! Eminmisiniz?')">Sil</a> </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
