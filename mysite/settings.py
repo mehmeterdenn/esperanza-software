@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+#ekseri
 # Application definition
 
 INSTALLED_APPS = [
